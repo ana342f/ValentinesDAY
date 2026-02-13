@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day!</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  h1 {
+    color: #fff;
+    text-shadow: 2px 2px 8px #ff4d6d;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: #ff4d6d;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px #ff2a4d;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    background: #ff2a4d;
+  }
+
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: floatUp 4s linear infinite;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -10px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: 10px;
+    top: 0;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Happy Valentine's Day, Victoriia & Illya! 💖</h1>
+<button id="surpriseBtn">Get Your Surprise!</button>
+
+<script>
+  const messages = [
+    "You are loved! 💘",
+    "Keep coding and smiling! 😄",
+    "Roses are red, code is sweet! 🌹💻",
+    "You make learning fun! ❤️",
+    "Happy Valentine's Day! 💌"
+  ];
+
+  document.getElementById("surpriseBtn").addEventListener("click", () => {
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    alert(msg);
+  });
+
+  // Create floating hearts
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.width = 20 + Math.random() * 20 + 'px';
+    heart.style.height = heart.style.width;
+    heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
